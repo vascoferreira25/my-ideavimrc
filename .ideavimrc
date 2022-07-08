@@ -1,0 +1,89 @@
+"" Source your .vimrc
+"source ~/.vimrc
+
+"" Change default leader key to a space
+let mapleader=" "
+
+set surround
+set multiple-cursors " use M-j and M-k to go through occurences of word at point
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set exchange
+set highlightedyank
+
+set showmode
+set incsearch
+set nu
+
+" Quickly open/reload vimrc
+nnoremap <leader>ev :split $MYVIMRC<CR>
+nnoremap <leader>rv :source $MYVIMRC<CR>
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Move lines up and down
+map <S-k> <Action>(MoveLineUp)
+map <S-j> <Action>(MoveLineDown)
+
+"" Remap copy and paste to use clipboard
+" vnoremap y "+y
+" vnoremap p "+p
+
+"" Remap o to create a new line and exit insert mode
+nmap o A<enter><Esc>
+nmap O I<enter><Esc>
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map <leader>r to start run
+map <leader>r <Action>(Run)
+
+"" Map <leader>d to start debug
+map <leader>d <Action>(Debug)
+
+"" Map <leader>t to run main with coverage
+map <leader>C <Action>(RunCoverage)
+
+"" Run tests
+map <leader>C <Action>(RerunTests)
+
+"" Map <leader>b to toggle the breakpoint on the current line
+map <leader>b <Action>(ToggleLineBreakpoint)
+
+"" Map <leader>g to generate code
+map <leader>j <Action>(Generate)
+
+"" Map <leader>c to comment line
+map <leader>c <Action>(CommentByLineComment)
+
+"" Map change tabs
+map <C-h> <Action>(PreviousTab)
+map <C-l> <Action>(NextTab)
+
+"" Go to test
+map <leader>gt <Action>(GotoTest)
+
+"" Reformat
+map <leader>R <Action>(RefactoringMenu)
+
+" Map ctrl+j and ctrl+k to select up and down popup completion stuff
+" Changed on Settings > Keymap > Editor Actions > Up/Down
+" map <C-k> <Action>(Up)
+" map <C-j> <Action>(Down)
+
+" This is actually an undocumented option for internal use. If there is a bug in
+" IdeaVim code and after some command, IdeaVim calculates that the caret should
+" be located at 1000000 offset in a short file, we have a protection that would put
+" the caret just at the file end. This way the actual error is hidden from the user.
+" With this option enabled, an exception will be thrown and IJ will show a notification
+" that something is wrong. Since I use IdeaVim for myself, I'd like to see such
+" notifications and this option is enabled for me.
+set ideastrictmode
+
+
+" Find more examples here: https://jb.gg/share-ideavimrc
